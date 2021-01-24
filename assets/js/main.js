@@ -54,7 +54,6 @@ jQuery(document).ready(function($) {
     });
     
     
-    // AJAX CONTACT FORM SUBMIT
     $("#contact-form").submit(function(e) {
 
         e.preventDefault();
