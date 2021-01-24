@@ -2,11 +2,9 @@ jQuery(window).on('load', function() {
 	"use strict";
     
     
-    // HIDE PRELOADER
     $(".preloader").addClass("hide-preloader");   
     
-    // SHOW/ANIMATE ANIMATION CONTAINER
-    setTimeout(function(){
+        setTimeout(function(){
 
         $("#intro .animation-container").each(function() {
 
@@ -30,7 +28,7 @@ jQuery(document).ready(function($) {
 	"use strict";
     
     
-    // SMOOTH SCROLL FOR SAME PAGE LINKS
+    
     $(document).on('click', 'a.smooth-scroll', function(event) {
         
         event.preventDefault();
@@ -42,7 +40,7 @@ jQuery(document).ready(function($) {
     });
     
     
-    // SCROLL REVEAL SETUP
+    
     window.sr = ScrollReveal();
     sr.reveal(".scroll-animated-from-right", { 
         duration: 600,
@@ -56,58 +54,4 @@ jQuery(document).ready(function($) {
     });
     
     
-    // AJAX CONTACT FORM SUBMIT
-    $("#contact-form").submit(function(e) {
-
-        e.preventDefault();
-        var postdata = $(this).serialize();
-
-        $.ajax({
-
-            type: "POST",
-            url: "assets/php/contact.php",
-            data: postdata,
-            dataType: "json",
-            success: function(json) {
-
-                $("#contact-form input, #contact-form textarea").removeClass("error");
-
-                setTimeout(function(){
-
-                    if (json.nameMessage !== "") {
-
-                        $("#contact-form-name").addClass("error");
-
-                    }
-
-                    if (json.emailMessage !== "") {
-
-                        $("#contact-form-email").addClass("error");
-
-                    }
-
-                    if (json.messageMessage !== "") {
-
-                        $("#contact-form-message").addClass("error");
-
-                    }
-
-                }, 10);
-
-                if (json.nameMessage === "" && json.emailMessage === "" && json.messageMessage === "") {
-
-                    $("#contact-form.error input, #contact-form.error textarea").removeClass("error");
-                    $('#contact-form').addClass("success");
-                    $('#contact-form textarea, #contact-form input').attr("placeholder","");
-                    $('#contact-form input, #contact-form button, #contact-form textarea').val('').prop('disabled', true);
-
-                }
-
-            }
-
-        });
-
-    });
-
     
-});
